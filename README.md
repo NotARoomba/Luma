@@ -44,8 +44,9 @@ The case includes:
 
 Designed in Fusion 360.
 
-<img src="assets/cad_walls.png" alt="CAD model" width="500"/>
 <img src="assets/cad_render.png" alt="CAD model" width="500"/>
+<img src="assets/cad_finish.png" alt="CAD model" width="500"/>
+<img src="assets/cad_walls.png" alt="CAD model" width="500"/>
 
 ## PCB
 
