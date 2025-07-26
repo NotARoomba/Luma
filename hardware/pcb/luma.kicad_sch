@@ -12154,6 +12154,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C720477"
+			(at 302.26 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "377c3e5a-f2ab-458b-81ee-5d264f0d5b0e")
 		)
@@ -14778,6 +14787,15 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
+			(at 302.26 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C720477"
 			(at 302.26 36.83 0)
 			(effects
 				(font
