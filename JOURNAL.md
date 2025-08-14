@@ -62,3 +62,11 @@ After starting again, I removed all of the LED's and added a header to be able t
 I also created the code using C++ (arduino). I added a test code to get the lights working as I plan to add the app functionality when I build the lamp.
 
 **Time Spent:** 5 Hours
+
+# August 6
+
+The parts finally came in and I went to work on constructing the lamp before the deadline. Just a tiny problem: I forgot to add tolerances. So I had to hack away at the grooves and the feet of the base and handle as they didn't fit snugly in the holes. I used a Dremel with that circular attachment and kinda melted the plastic, but then I spray painted it black and added all of the components. I'll admit I also had to hack away at the USB-C connector as it was my first time designing something like that and I didn't know how big to make it, but apparently it was too small. I didn't take many photos as my hands were filled with dust and stuff. I did take photos of me buying the paint and acrylic, so here they are along with the final product.
+
+![alt text](/assets/acrylic_panes.jpg)
+![alt text](/assets/spray_paint.jpg)
+![alt text](/assets/final_product.jpg)
