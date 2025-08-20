@@ -1,2 +1,4 @@
 
 software/app/.env
+software/app/GoogleService-Info.plist
+software/app/google-services.json
