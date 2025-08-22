@@ -1,21 +1,10 @@
-import auth from "@react-native-firebase/auth";
-import { useRouter } from "expo-router";
+import { useSession } from "@/hooks/useAuth";
 import { Bell, LogOut, Settings, User } from "lucide-react-native";
 import * as React from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 
-export default function HomeScreen() {
-  const user = auth().currentUser;
-  const router = useRouter();
-
-  const handleSignOut = async () => {
-    try {
-      await auth().signOut();
-      router.replace("/");
-    } catch (error) {
-      console.error("Error signing out:", error);
-    }
-  };
+export default function Index() {
+  const { session, signOut } = useSession();
 
   return (
     <View className="flex-1 bg-night-500">
@@ -27,11 +16,11 @@ export default function HomeScreen() {
               Welcome back!
             </Text>
             <Text className="text-gunmetal-400 text-base mt-1">
-              {user?.email}
+              {session?.email}
             </Text>
           </View>
           <TouchableOpacity
-            onPress={handleSignOut}
+            onPress={signOut}
             className="bg-princeton_orange-500 p-3 rounded-2xl"
           >
             <LogOut size={24} color="#0f0f0f" />
@@ -101,8 +90,8 @@ export default function HomeScreen() {
                 Member Since
               </Text>
               <Text className="text-cosmic_latte-500 text-lg font-semibold">
-                {user?.metadata?.creationTime
-                  ? new Date(user.metadata.creationTime).toLocaleDateString()
+                {session?.metadata?.creationTime
+                  ? new Date(session.metadata.creationTime).toLocaleDateString()
                   : "Today"}
               </Text>
             </View>

@@ -1,4 +1,11 @@
-import auth, { FirebaseAuthTypes } from "@react-native-firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signOut as firebaseSignOut,
+  onAuthStateChanged,
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword,
+  User,
+} from "firebase/auth";
 import {
   createContext,
   type PropsWithChildren,
@@ -6,15 +13,20 @@ import {
   useEffect,
   useState,
 } from "react";
+import { auth } from "../lib/firebase";
 
 const AuthContext = createContext<{
   signIn: (email: string, password: string) => Promise<void>;
+  signUp: (email: string, password: string) => Promise<void>;
   signOut: () => Promise<void>;
-  session?: FirebaseAuthTypes.User | null;
+  resetPassword: (email: string) => Promise<void>;
+  session?: User | null;
   isLoading: boolean;
 }>({
   signIn: async () => {},
+  signUp: async () => {},
   signOut: async () => {},
+  resetPassword: async () => {},
   session: null,
   isLoading: false,
 });
@@ -31,10 +43,10 @@ export function useSession() {
 
 export function SessionProvider({ children }: PropsWithChildren) {
   const [isLoading, setIsLoading] = useState(true);
-  const [session, setSession] = useState<FirebaseAuthTypes.User | null>(null);
+  const [session, setSession] = useState<User | null>(null);
 
   useEffect(() => {
-    const unsubscribe = auth().onAuthStateChanged((user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       setSession(user);
       setIsLoading(false);
     });
@@ -44,7 +56,15 @@ export function SessionProvider({ children }: PropsWithChildren) {
 
   const signIn = async (email: string, password: string) => {
     try {
-      await auth().signInWithEmailAndPassword(email, password);
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const signUp = async (email: string, password: string) => {
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
     } catch (error) {
       throw error;
     }
@@ -52,7 +72,15 @@ export function SessionProvider({ children }: PropsWithChildren) {
 
   const signOut = async () => {
     try {
-      await auth().signOut();
+      await firebaseSignOut(auth);
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const resetPassword = async (email: string) => {
+    try {
+      await sendPasswordResetEmail(auth, email);
     } catch (error) {
       throw error;
     }
@@ -62,7 +90,9 @@ export function SessionProvider({ children }: PropsWithChildren) {
     <AuthContext.Provider
       value={{
         signIn,
+        signUp,
         signOut,
+        resetPassword,
         session,
         isLoading,
       }}

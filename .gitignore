@@ -2,3 +2,6 @@
 software/app/.env
 software/app/GoogleService-Info.plist
 software/app/google-services.json
+software/.env
+software/GoogleService-Info.plist
+software/google-services.json
