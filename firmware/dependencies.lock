@@ -1,4 +1,14 @@
 dependencies:
+  espressif/cmake_utilities:
+    component_hash: 351350613ceafba240b761b4ea991e0f231ac7a9f59a9ee901f751bddc0bb18f
+    dependencies:
+    - name: idf
+      require: private
+      version: '>=4.1'
+    source:
+      registry_url: https://components.espressif.com
+      type: service
+    version: 0.5.3
   espressif/led_strip:
     component_hash: 223998f10cae6d81f2ad2dd3c1103c2221be298c708e37917482b0153f3ec64e
     dependencies:
@@ -13,9 +23,24 @@ dependencies:
     source:
       type: idf
     version: 5.5.0
+  kodediy/kode_bq25896:
+    component_hash: 0ea97fd6766697b187c8b9819fc92806c1afe2a97acc0b61cd79c05958b30be4
+    dependencies:
+    - name: espressif/cmake_utilities
+      registry_url: https://components.espressif.com
+      require: private
+      version: 0.*
+    - name: idf
+      require: private
+      version: '>=5.0.0'
+    source:
+      registry_url: https://components.espressif.com/
+      type: service
+    version: 1.0.1
 direct_dependencies:
 - espressif/led_strip
 - idf
-manifest_hash: 4a3ee7613d24171be17fd9f281af5c64809fc0bc9191c0ea06fcf9bdadc511cb
+- kodediy/kode_bq25896
+manifest_hash: a1385322e31194f10c92e3f61b05735adac426360e89ce19c5bfee1f479be88b
 target: esp32
 version: 2.0.0
