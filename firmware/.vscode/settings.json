@@ -14,6 +14,6 @@
     "--compile-commands-dir=c:\\Users\\Nathan\\Documents\\GitHub\\Luma\\firmware\\build"
   ],
   "idf.flashType": "UART",
-  "idf.portWin": "COM18",
+  "idf.portWin": "COM14",
   "idf.flashBaudRate": "921600"
 }
